@@ -1,0 +1,39 @@
+/* body {
+    padding-left: 56px;
+  } */
+.homeHeader {
+  text-align: left;
+  padding-left: 125px;
+  color: rgb(0, 195, 255);
+}
+
+.home {
+  text-align: center;
+}
+
+.listOfBooks{
+  display: none;
+}
+#addBookButton{
+  text-align: end;
+}
+
+.virtualTour{
+  text-align: center;
+  display: none;
+}
+.aboutUs {
+  text-align: center;
+  display: none;
+}
+
+.addNewBook{
+  padding-left: 125px;
+  padding-right: 125px;
+  display: none;
+}
+.paragraph {
+  text-align: left;
+  padding-left: 125px;
+  padding-right: 120px;
+}

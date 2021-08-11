@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="./style/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./main.css" rel="stylesheet">
+  <script src="./style/js/bootstrap.min.js"></script>
+  <script src="./script.js" defer></script>
+</head>
+
+<body class="body">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid" id="nav">
+      <a class="navbar-brand" href="#">The City Library</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" id="homButton" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="aboutUsButton" href="#">About Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" id="virtualTourButton" href="#">Virtual Tour</a>
+            <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id ="booksButton" href="#">Books</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" hidden>
+          <button class="btn btn-outline-success" id="searchButton" type="submit" hidden>Search</button>
+        </form>
+      </div>
+    </div>
+  </nav><br>
+  <div class="home" >
+    <h3 class="homeHeader">Welcome to the City Library</h3>
+    <hr>
+    <img src="./resources/banner1.png" class="img-fluid" alt="banner1"><br><br>
+    <p class="paragraph">
+      We are a top-flight, fully-digitized library. Find out more <a href="#">about us</a>
+      and learn how we can serve you with a widest variety of books and lots of other digital content, all
+      for your education as well as your entetainment. You can also <a href="#">virtual tour</a>
+      , of our world-class facilities and be amazed at all what we have in stock for you, your family and friends.
+      <br><br>
+      Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry's
+      standard dummy text ever since the 1500s, when an unknown printer took a gallery of type and scrambled it to
+      make a type specimen book. it has survived not only five centuries.<br><br>
+      Already have access as a Memeber, Librarian or System Administrator? Then simply Sign-in to access the full
+      range of services available to you, based on your role and access rights.
+    </p>
+  </div>
+  <div class="aboutUs" id="aboutUsLibrary">
+    <h3 class="homeHeader">About the City Library</h3>
+    <hr>
+    <p class="paragraph">We are your premier digital library. Our collection has the wildest
+      variety of books and lots of other digital content, for your education as well as your
+      entertainment. You can <a href="#">take a virtual tour</a>, of our world-class facilities
+      and be amazed at all what we have in stock for you, your family and friends.<br><br>
+      Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry's
+      standard dummy text ever since the 1500s, when an unknown printer took a gallery of type and scrambled it to
+      make a type specimen book. it has survived not only five centuries.
+    </p>
+  </div>
+  <div class="virtualTour" id="virtualTour">
+    <h3 class="homeHeader">Virtual Tour of the eLibrary</h3>
+    <hr>
+    <p class="paragraph">Panormic views and knowledge fountains.</p>
+    <img src="./resources/panoramic.png" class="img-fluid" alt="banner1"><br><br>
+    <p class="paragraph">Already have access as a Memeber, Librarian or System Administrator? Then simply Sign-in to
+      access the full
+      range of services available to you, based on your role and access rights.</p>
+  </div>
+  <div class="listOfBooks">
+    <h3 class="homeHeader">Books in our collection <br><button type="submit" class="btn btn-primary" id="addBookButton">Add Book</button></h3><hr>
+  </div>
+  <div class="addNewBook" >
+    <h3 class="homeHeader">New Book Form</h3>
+    <hr>
+    <div class="row g-3">
+      <div>
+        <div class="col">
+          <label for="inputEmail4" class="form-label" id="bookTitle">*Book Title</label>
+          <input type="text" class="form-control" aria-label="First name">
+        </div>
+      </div>
+      <div class="col">
+        <label for="inputEmail4" class="form-label" id="isbn">*ISBN</label>
+        <input type="text" class="form-control" aria-label="Last name">
+      </div>
+      <div class="col">
+        <label for="inputEmail4" class="form-label" id="publisher">*Publisher</label>
+        <input type="text" class="form-control" aria-label="First name">
+      </div>
+      <div class="col">
+        <label for="inputEmail4" class="form-label" id="fee">*Overdue Fee per day</label>
+        <input type="number" class="form-control" aria-label="First name">
+      </div>
+      <div class="col">
+        <label for="inputEmail4" class="form-label" id="datePublished">*Datepublished</label>
+        <input type="date" class="form-control" aria-label="First name">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" id="saveBookButton">Save Book</button>
+        <button type="reset" class="btn btn-secondary" id="resetButton">Reset</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
