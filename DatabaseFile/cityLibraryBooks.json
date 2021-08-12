@@ -1,0 +1,9 @@
+{"_id":{"$oid":"6112b1a0b5fb654c820e6a0d"},"ISBN":"978-0135974445","bookTitle":"Angile Software Development","overdueFee":1.05,"publisher":"Prentice Hall","datePublished":"2002-10-25"}
+{"_id":{"$oid":"6112b1a0b5fb654c820e6a0e"},"ISBN":"978-0135166307","bookTitle":"Core Java - Fundamentals, 12th Edition","overdueFee":1.75,"publisher":"Pearson","datePublished":"2018-08-27"}
+{"_id":{"$oid":"6112b1a0b5fb654c820e6a0f"},"ISBN":"978-0073523323","bookTitle":"Database System Concepts, 6th Edition","overdueFee":1.47,"publisher":"McGraw Hill","datePublished":"2011-05-19"}
+{"_id":{"$oid":"6112b1a0b5fb654c820e6a10"},"ISBN":"978-0321127426","bookTitle":"Patterns of Enterprise Application Architecture","overdueFee":2.49,"publisher":"Addison Wesley","datePublished":"2002-11-25"}
+{"_id":{"$oid":"6112b1a0b5fb654c820e6a11"},"ISBN":"978-1234567890","bookTitle":"Spring In Action","overdueFee":0.99,"publisher":"Manning","datePublished":"2010-09-24"}
+{"_id":{"$oid":"6112b1a0b5fb654c820e6a12"},"ISBN":"978-000000112","bookTitle":"UML Distilled, 3rd Edition","overdueFee":1.86,"publisher":"John Wiley","datePublished":"2018-03-16"}
+{"_id":{"$oid":"6114a4bca3be166e92bc139c"},"ISBN":"978-2165924548","bookTitle":"Introduction To Algorithm","overdueFee":2.65,"publisher":"Clyde Ruby","datePublished":"1996-08-23"}
+{"_id":{"$oid":"6115510fed469934ac48a9de"},"ISBN":"978-0000000001","bookTitle":"An Introduction to Databases","overdueFee":1.55,"publisher":"Apress","datePublished":"2021-08-12"}
+{"_id":{"$oid":"6115561f519569b5477ee921"},"ISBN":"978-0-321-82213-0","bookTitle":"Secure Coding in C and C++, Second Edition","overdueFee":2.6,"publisher":"Robert C. Seacord","datePublished":"2013-07-12"}
