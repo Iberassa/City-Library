@@ -5,7 +5,7 @@ class Books {
     constructor(ISBN, bookTitle, overdueFee, publisher, datePublished) {
         this.ISBN = ISBN;
         this.bookTitle = bookTitle;
-        this.overdueFee = `$${overdueFee}`;
+        this.overdueFee = overdueFee;
         this.publisher = publisher;
         this.datePublished = datePublished;
     }

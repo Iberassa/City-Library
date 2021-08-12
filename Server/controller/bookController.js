@@ -17,6 +17,7 @@ exports.getOneBook = (req, res) => {
 }
 
 exports.insertBook = (req, res) => {
+    console.log(req.body.ISBN);
     const book = new Books(req.body.ISBN, req.body.bookTitle, req.body.overdueFee, req.body.publisher, req.body.datePublished);
     book.save();
     res.json({ Status: "Data inserted" });
