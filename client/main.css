@@ -7,24 +7,38 @@
   color: rgb(0, 195, 255);
 }
 
+.listOfBooksHeader{
+  text-align: left;
+  padding-left: 125px;
+  color: rgb(0, 195, 255);
+}
 .home {
   text-align: center;
+  padding-right: 120px;
+  padding-left: 100px;
 }
 
 .listOfBooks{
   display: none;
+  text-align: center;
+  padding-right: 120px;
+  padding-left: 100px;
 }
 #addBookButton{
-  text-align: end;
+  float: right;
 }
 
 .virtualTour{
   text-align: center;
   display: none;
+  padding-right: 120px;
+  padding-left: 100px;
 }
 .aboutUs {
   text-align: center;
   display: none;
+  padding-right: 120px;
+  padding-left: 100px;
 }
 
 .addNewBook{
