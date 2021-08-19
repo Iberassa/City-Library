@@ -46,11 +46,20 @@
   padding-right: 125px;
   display: none;
 }
+
 .paragraph {
   text-align: left;
   padding-left: 125px;
   padding-right: 120px;
 }
+
+
+.searchAddButtons{
+  padding-left: 125px;
+  padding-right: 125px;
+  display: none;
+}
+
 
 #footer {
    padding-right: 125px;
@@ -58,7 +67,7 @@
    bottom:0;
    width:100%;
    height:60px;   
-   background:#6cf;
+   background-color:#6cf;
 }
 
 #footer-content {

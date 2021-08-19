@@ -24,6 +24,7 @@ const listOfBooksHeader = listOfBooksDiv.innerHTML
 const addNewBookDiv = document.querySelector('.addNewBook');
 
 
+
 //Links
 const aboutUsLink = document.querySelector('#aboutUsLink');
 const virtualTourLink = document.querySelector('#virtualTourLink');
@@ -38,6 +39,7 @@ const publisher = document.querySelector('#publisher');
 const fee = document.querySelector('#fee');
 const datePublished = document.querySelector('#datePublished');
 
+
 //Add book directing button
 const addBookButton = document.querySelector('#addBookButton');
 
@@ -45,10 +47,16 @@ const addBookButton = document.querySelector('#addBookButton');
 const saveBookButton = document.querySelector('#saveBookButton');
 const resetButton = document.querySelector('#resetButton');
 
+
+//Search book
+const searchBookButton = document.querySelector('#searchBookButton');
+const searchISBN = document.querySelector('#searchISBN');
+const searchAddButtons = document.querySelector('.searchAddButtons');
+
 //Footer
 const footerContent = document.querySelector('#footerContent');
 const date = new Date()
-footerContent.innerHTML= date.toLocaleString('default', { month: 'long' })+", "+date.getFullYear()
+footerContent.innerHTML = date.toLocaleString('default', { month: 'long' }) + ", " + date.getFullYear()
 
 
 window.onload = () => {
@@ -65,88 +73,222 @@ window.onload = () => {
     addBookButton.style.display = "none";
 
 
-theCityLibrary.addEventListener('click', loadHomaPage);
-homeButton.addEventListener("click", loadHomaPage);
+    theCityLibrary.addEventListener('click', loadHomaPage);
+    homeButton.addEventListener("click", loadHomaPage);
 
-function loadHomaPage() {
-    let state = { 'page_id': 1 };
-                let title = '';
-                let url = '?home';
-                history.pushState(state, title, url);
-    if (homeDiv.style.display == "block") {
-        return
-    } else {
-        homeDiv.style.display = "block";
-        aboutUsDiv.style.display = "none";
-        virtualTourDiv.style.display = "none";
-        addNewBookDiv.style.display = "none";
-        listOfBooksDiv.style.display = "none";
-        addBookButton.style.display = "none";
+    function loadHomaPage() {
+        let state = { 'page_id': 1 };
+        let title = '';
+        let url = '?home';
+        history.pushState(state, title, url);
+        if (homeDiv.style.display == "block") {
+            return
+        } else {
+            homeDiv.style.display = "block";
+            aboutUsDiv.style.display = "none";
+            virtualTourDiv.style.display = "none";
+            addNewBookDiv.style.display = "none";
+            listOfBooksDiv.style.display = "none";
+            addBookButton.style.display = "none";
+            searchAddButtons.style.display = "none";
+        }
+    }
+
+    aboutUsLink.addEventListener('click', loadAboutUsPage);
+    aboutUsButton.addEventListener('click', loadAboutUsPage);
+
+    function loadAboutUsPage() {
+        let state = { 'page_id': 1 };
+        let title = '';
+        let url = '?aboutus';
+        history.pushState(state, title, url);
+        if (aboutUsDiv.style.display == "block") {
+            return
+        } else {
+            aboutUsDiv.style.display = "block";
+            homeDiv.style.display = "none";
+            virtualTourDiv.style.display = "none";
+            addNewBookDiv.style.display = "none";
+            listOfBooksDiv.style.display = "none";
+            addBookButton.style.display = "none";
+            searchAddButtons.style.display = "none";
+        }
+    }
+    virtualTourLink.addEventListener('click', loadVirtualtour);
+    virtualTourLinkAboutUs.addEventListener('click', loadVirtualtour);
+    virtualTourButton.addEventListener('click', loadVirtualtour);
+
+    function loadVirtualtour() {
+        let state = { 'page_id': 1 };
+        let title = '';
+        let url = '?virtualtour';
+        history.pushState(state, title, url);
+        if (virtualTourDiv.style.display == "block") {
+            return;
+        } else {
+            virtualTourDiv.style.display = "block";
+            homeDiv.style.display = "none";
+            aboutUsDiv.style.display = "none";
+            addNewBookDiv.style.display = "none";
+            listOfBooksDiv.style.display = "none";
+            addBookButton.style.display = "none";
+            searchAddButtons.style.display = "none";
+        }
+    }
+
+    listBookButton.addEventListener('click', loadBooksPage);
+
+    function loadBooksPage() {
+        let state = { 'page_id': 1 };
+        let title = '';
+        let url = '?books';
+        history.pushState(state, title, url);
+        if (listOfBooksDiv.style.display == "block") {
+            return;
+        } else {
+            listOfBooksDiv.style.display = "block";
+            addBookButton.style.display = "block";
+            searchAddButtons.style.display = "block";
+            virtualTourDiv.style.display = "none";
+            homeDiv.style.display = "none";
+            aboutUsDiv.style.display = "none";
+            addNewBookDiv.style.display = "none";
+            displayBooks();
+        }
+    }
+
+    let count = 1;
+    function displayBooks() {
+        tableView();
+        const table = document.querySelector('table');
+        fetchBooks();
+        async function fetchBooks() {
+            const url = "http://localhost:3000/citylibrary/api/book";
+
+            const book = await fetch(url, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            const result = await book.json()
+            for (let i = 0; i < result.length; i++) {
+                table.innerHTML += `<tbody>
+    <tr>
+      <th scope="row">${count}</th>
+      <td>${result[i].ISBN}</td>
+      <td>${result[i].bookTitle}</td>
+      <td>$${result[i].overdueFee}</td>
+      <td>${result[i].publisher}</td>
+      <td>${result[i].datePublished}</td>
+    </tr>
+    </tbody>`
+                count++;
+            }
+            count = 1;
+        }
+    }
+
+    addBookButton.addEventListener('click', addBookFormDisplay);
+
+    function addBookFormDisplay() {
+        let state = { 'page_id': 1 };
+        let title = '';
+        let url = '?addbook';
+        history.pushState(state, title, url);
+        if (addNewBookDiv.style.display == "block") {
+            return;
+        } else {
+            addNewBookDiv.style.display = "block";
+            listOfBooksDiv.style.display = "none"
+            virtualTourDiv.style.display = "none";
+            homeDiv.style.display = "none";
+            aboutUsDiv.style.display = "none";
+            addBookButton.style.display = "none";
+            searchAddButtons.style.display = "none";
+        }
+    }
+
+
+    resetButton.addEventListener('click', removeData)
+
+
+    function removeData() {
+        isbn.value = '';
+        bookTitle.value = '';
+        fee.display = '';
+        publisher.value = '';
+        datePublished.value = ''
+    }
+
+
+
+    saveBookButton.addEventListener('click', addBookToDB);
+
+
+    async function addBookToDB() {
+        const bookValue = {
+            ISBN: isbn.value,
+            bookTitle: bookTitle.value,
+            overdueFee: fee.value,
+            publisher: publisher.value,
+            datePublished: datePublished.value
+        }
+        if (bookValue.ISBN.length == '' || bookValue.length == '' || bookValue.overdueFee.length == '' || bookValue.publisher.length == '' || bookValue.datePublished.length == '') {
+            console.log(bookValue.datePublished.length)
+            alert("Please insert all book values!!");
+            return;
+        } else {
+            console.log(bookValue.datePublished == '');
+            const url = "http://localhost:3000/citylibrary/api/book"
+            const add = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(bookValue)
+            })
+            const result = await add.json();
+            console.log(result.Status);
+            alert(result.Status);
+        }
     }
 }
 
-aboutUsLink.addEventListener('click', loadAboutUsPage);
-aboutUsButton.addEventListener('click', loadAboutUsPage);
 
-function loadAboutUsPage() {
-    let state = { 'page_id': 1 };
-                let title = '';
-                let url = '?aboutus';
-                history.pushState(state, title, url);
-    if (aboutUsDiv.style.display == "block") {
-        return
-    } else {
-        aboutUsDiv.style.display = "block";
-        homeDiv.style.display = "none";
-        virtualTourDiv.style.display = "none";
-        addNewBookDiv.style.display = "none";
-        listOfBooksDiv.style.display = "none";
-        addBookButton.style.display = "none";
-    }
-}
-virtualTourLink.addEventListener('click', loadVirtualtour);
-virtualTourLinkAboutUs.addEventListener('click', loadVirtualtour);
-virtualTourButton.addEventListener('click', loadVirtualtour);
+searchBookButton.addEventListener('click', searchBookByISBN);
 
-function loadVirtualtour() {
-    let state = { 'page_id': 1 };
-                let title = '';
-                let url = '?virtualtour';
-                history.pushState(state, title, url);
-    if (virtualTourDiv.style.display == "block") {
-        return;
+async function searchBookByISBN() {
+    let isbn = searchISBN.value;
+    if (isbn.length == "") {
+        alert("Please insert a correct isbn code.");
     } else {
-        virtualTourDiv.style.display = "block";
-        homeDiv.style.display = "none";
-        aboutUsDiv.style.display = "none";
-        addNewBookDiv.style.display = "none";
-        listOfBooksDiv.style.display = "none";
-        addBookButton.style.display = "none";
+        const url = `http://localhost:3000/citylibrary/api/book/${isbn}`;
+        const book = await fetch(url, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        const result = await book.json();
+        if (result.length == 0) {
+            alert("No book found with that ISBN number!!");
+        } else {
+            tableView();
+            const table = document.querySelector('table');
+            table.innerHTML += `<tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>${result[0].ISBN}</td>
+      <td>${result[0].bookTitle}</td>
+      <td>$${result[0].overdueFee}</td>
+      <td>${result[0].publisher}</td>
+      <td>${result[0].datePublished}</td>
+    </tr>
+    </tbody>`
+        }
     }
 }
 
-listBookButton.addEventListener('click', loadBooksPage);
-
-function loadBooksPage() {
-    let state = { 'page_id': 1 };
-                let title = '';
-                let url = '?books';
-                history.pushState(state, title, url);
-    if (listOfBooksDiv.style.display == "block") {
-        return;
-    } else {
-        listOfBooksDiv.style.display = "block"
-        addBookButton.style.display = "block";
-        virtualTourDiv.style.display = "none";
-        homeDiv.style.display = "none";
-        aboutUsDiv.style.display = "none";
-        addNewBookDiv.style.display = "none";
-        displayBooks();
-    }
-}
-
-let count = 1;
-function displayBooks() {
+function tableView() {
     listOfBooksDiv.innerHTML = listOfBooksHeader + `<div class="bookTable"><table class="table">
     <thead>
       <tr>
@@ -158,97 +300,6 @@ function displayBooks() {
         <th scope="col">Date Published</th>
       </tr>
     </thead>
-</table>
+ </table>
     </div>`
-    const table = document.querySelector('table');
-    fetchBooks();
-    async function fetchBooks() {
-        const url = "http://localhost:3000/citylibrary/api/book";
-
-        const book = await fetch(url, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-        const result = await book.json()
-        for (let i = 0; i < result.length; i++) {
-            table.innerHTML += `<tbody>
-    <tr>
-      <th scope="row">${count}</th>
-      <td>${result[i].ISBN}</td>
-      <td>${result[i].bookTitle}</td>
-      <td>$${result[i].overdueFee}</td>
-      <td>${result[i].publisher}</td>
-      <td>${result[i].datePublished}</td>
-    </tr>
-    </tbody>`
-            count++;
-        }
-        count = 1;
-    }
-}
-
-addBookButton.addEventListener('click', addBookFormDisplay);
-
-function addBookFormDisplay() {
-    let state = { 'page_id': 1 };
-                let title = '';
-                let url = '?addbook';
-                history.pushState(state, title, url);
-    if (addNewBookDiv.style.display == "block") {
-        return;
-    } else {
-        addNewBookDiv.style.display = "block";
-        listOfBooksDiv.style.display = "none"
-        virtualTourDiv.style.display = "none";
-        homeDiv.style.display = "none";
-        aboutUsDiv.style.display = "none";
-        addBookButton.style.display = "none";
-    }
-}
-
-
-resetButton.addEventListener('click', removeData)
-
-
-function removeData() {
-    isbn.value = '';
-    bookTitle.value = '';
-    fee.display = '';
-    publisher.value = '';
-    datePublished.value = ''
-}
-
-
-
-saveBookButton.addEventListener('click', addBookToDB);
-
-
-async function addBookToDB() {
-    const bookValue = {
-        ISBN: isbn.value,
-        bookTitle: bookTitle.value,
-        overdueFee: fee.value,
-        publisher: publisher.value,
-        datePublished: datePublished.value
-    }
-    if (bookValue.ISBN.length == '' || bookValue.length == ''  || bookValue.overdueFee.length =='' || bookValue.publisher.length == '' || bookValue.datePublished.length == '') {
-        console.log(bookValue.datePublished.length)
-        alert("Please insert all book values!!");
-        return;
-    } else {
-        console.log(bookValue.datePublished=='');
-        const url = "http://localhost:3000/citylibrary/api/book"
-        const add = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(bookValue)
-        })
-        const result = await add.json();
-        console.log(result.Status);
-        alert(result.Status);
-    }
-}
 }
